@@ -2,15 +2,24 @@
 # ask user for operation to perform
 # perform operation on numbers
 # output result of operation
+require 'pry'
 
 def prompt(message)
   puts "=> #{message}"
 end
 
-def valid_number?(number)
+def integer?(number)
   number.to_i.to_s == number
 end
 
+def float?(number)
+  number.to_f.to_s == number
+end
+
+def number?(num)
+  integer?(num) || float?(num)
+end
+  
 def operation_to_message(op)
   case op
   when '1'
@@ -46,7 +55,7 @@ loop do    # main loop
     prompt 'First number: '
     num1 = gets.chomp
 
-    if valid_number?(num1)
+    if number?(num1)
       break
     else
       prompt "Hmm...that doesn't seem valid"
@@ -57,7 +66,7 @@ loop do    # main loop
   loop do
     prompt "Second number: "
     num2 = gets.chomp
-    if valid_number?(num2)
+    if number?(num2)
       break
     else
       prompt "Hmm...that doesn't look valid"
@@ -90,15 +99,14 @@ loop do    # main loop
 
   result = case operator
            when "1"
-             num1.to_i + num2.to_i
+             num1.to_f + num2.to_f
            when "2"
-             num1.to_i - num2.to_i
+             num1.to_f - num2.to_f
            when "3"
-             num1.to_i * num2.to_i
+             num1.to_f * num2.to_f
            when "4"
              num1.to_f / num2.to_f
            end
-
   prompt "The result is: #{result}"
 
   prompt "Do you want to perform another calculation? (Y/N)"
