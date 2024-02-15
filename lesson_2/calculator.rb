@@ -8,7 +8,7 @@ def prompt(message)
 end
 
 def valid_number?(number)
- number.to_i != 0
+  number.to_i != 0
 end
 
 def operation_to_message(op)
@@ -20,17 +20,17 @@ def operation_to_message(op)
   when '3'
     'Multiplying'
   when '4'
-     'Dividing'
+    'Dividing'
   end
 end
- 
+
 prompt "Welcome to CALCULATOR!"
 
 name = ''
-loop do 
+loop do
   prompt "What is your name? "
   name = gets.chomp
-  
+
   if name.empty?
     prompt "Please insert name!"
   else
@@ -41,7 +41,6 @@ end
 prompt "Hi, #{name}!"
 
 loop do    # main loop
-
   num1 = ''
   loop do
     prompt 'First number: '
@@ -60,12 +59,12 @@ loop do    # main loop
     num2 = gets.chomp
     if valid_number?(num2)
       break
-    else 
+    else
       prompt "Hmm...that doesn't look valid"
     end
   end
   prompt "Numbers: #{num1} & #{num2}"
-  
+
   operator_prompt = <<-MSG
     What operation would you like to perform?
     1) add
@@ -73,20 +72,20 @@ loop do    # main loop
     3) multiply
     4) divide
   MSG
-  
+
   prompt(operator_prompt)
- 
-  operator = ''  
+
+  operator = ''
   loop do
     operator = gets.chomp
-    
+
     if %w(1 2 3 4).include?(operator)
       break
     else
       prompt "Must choose 1, 2, 3, or 4!"
     end
   end
-  
+
   prompt "#{operation_to_message(operator)} the two numbers..."
 
   result = case operator
@@ -98,14 +97,13 @@ loop do    # main loop
              num1.to_i * num2.to_i
            when "4"
              num1.to_f / num2.to_f
-  end
+           end
 
   prompt "The result is: #{result}"
-  
+
   prompt "Do you want to perform another calculation? (Y/N)"
   answer = gets.chomp
   break unless answer.downcase.start_with?('y')
 end
 
 prompt "Thank you! Please come again."
-
