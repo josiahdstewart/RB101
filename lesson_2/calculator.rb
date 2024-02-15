@@ -19,7 +19,7 @@ end
 def number?(num)
   integer?(num) || float?(num)
 end
-  
+
 def operation_to_message(op)
   case op
   when '1'
