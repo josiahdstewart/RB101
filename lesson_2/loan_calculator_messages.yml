@@ -1,0 +1,12 @@
+# loan calculator messages
+
+valid_number: "Please provide a valid number: "
+welcome: "Hello! Welcome to your personal loan calculator!"
+ask_name: "What is your name?"
+loan_amount: "Please provide your loan amount: "
+apr: "Provide your Annual Percentage Rate in % (APR)"
+loan_duration: "Provide the duration of your loan (yrs/mo):"
+correct_info: "Excellent!"
+incorrect_info: "Check if your loan duration is in the (years/months) format!"
+no_calculation: "Thank you for visiting us!"
+another_calculation: "Would you like to run another calculation? (y/n) "
