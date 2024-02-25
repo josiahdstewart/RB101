@@ -32,7 +32,7 @@ end
 def calculate_payment(apr, loan_duration, loan_principal)
   mo_int = (apr / 100) / 12
   loan_dur_mo = (loan_duration[0] * 12) + loan_duration[1]
-  mo_payment = loan_principal * (mo_int / (1 - ((1 + mo_int)**(-loan_dur_mo))))
+  loan_principal * (mo_int / (1 - ((1 + mo_int)**(-loan_dur_mo))))
 end
 
 prompt(MESSAGES['welcome'])
@@ -55,7 +55,7 @@ loop do
       loan_duration.push(0)
     end
 
-    loan_duration.map! { |duration| duration.to_i.to_s == duration ? duration.to_i : 0 }
+    loan_duration.map! { |dur| dur.to_i.to_s == dur ? dur.to_i : 0 }
 
     confirm_input_message = <<-INF
       Please confirm this information:
@@ -77,7 +77,7 @@ loop do
   monthly_payment = calculate_payment(apr, loan_duration, loan_principal)
   prompt "Your monthly payment is $#{monthly_payment.truncate(2)}"
 
-  prompt(MESSAGES['another_calculation']) 
+  prompt(MESSAGES['another_calculation'])
   if gets.chomp.downcase != "y"
     prompt(MESSAGES['no_calculation'])
     break
