@@ -2,7 +2,7 @@
 require "pry"
 
 VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard']
-COMPARE_CHOICES = {rock: ['scissors', 'lizard'], paper: ['rock', 'spock'], scissors: ['paper', 'lizard'], spock: ['scissors', 'rock'], lizard: ['paper', 'spock']}
+COMPARE_CHOICES = { rock: ['scissors', 'lizard'], paper: ['rock', 'spock'], scissors: ['paper', 'lizard'], spock: ['scissors', 'rock'], lizard: ['paper', 'spock'] }
 WINNING_SCORE = 3
 
 def prompt(message)
@@ -34,9 +34,6 @@ def display_result(player, computer)
   end
 end
 
-def add_score(player, computer, score1, score2)
-end
-
 def evaluate_score(score1, score2)
   if score1 == WINNING_SCORE
     prompt "You are the Grand Champion!"
@@ -49,7 +46,7 @@ player_score = 0
 computer_score = 0
 loop do
   choice = ''
-  while player_score < 3 && computer_score < 3 do
+  while player_score < 3 && computer_score < 3
     loop do
       prompt "Choose one: #{VALID_CHOICES.join(', ')}"
       prompt "Type the first two letters of your choice: "
