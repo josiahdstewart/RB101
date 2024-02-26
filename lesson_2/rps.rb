@@ -10,6 +10,17 @@ def win?(first, second)
   COMPARE_CHOICES[first.to_sym].include?(second)
 end
 
+def abr_to_full(abbreviated)
+  full_choice = ""
+  VALID_CHOICES.each do |choice|
+    if choice.start_with?(abbreviated)
+      full_choice = choice
+      break
+    end
+  end
+  full_choice
+end
+
 def display_result(player, computer)
   if win?(player, computer)
     prompt "You won!"
@@ -24,7 +35,10 @@ loop do
   choice = ''
   loop do
     prompt "Choose one: #{VALID_CHOICES.join(', ')}"
-    choice = gets.chomp
+    prompt "Type the first two letters of your choice: "
+    abr_choice = gets.chomp
+    
+    choice = abr_to_full(abr_choice)
 
     if VALID_CHOICES.include?(choice)
       break
