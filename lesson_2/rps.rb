@@ -46,11 +46,11 @@ player_score = 0
 computer_score = 0
 loop do
   choice = ''
-  while player_score < 3 && computer_score < 3
+  while player_score < WINNING_SCORE && computer_score < WINNING_SCORE
     loop do
       prompt "Choose one: #{VALID_CHOICES.join(', ')}"
       prompt "Type the first two letters of your choice: "
-      abr_choice = gets.chomp
+      abr_choice = gets.chomp.downcase
 
       choice = abr_to_full(abr_choice)
 
