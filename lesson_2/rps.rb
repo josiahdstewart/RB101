@@ -1,14 +1,13 @@
 # solicit user and computer input, compare, show winner
-VALID_CHOICES = ['rock', 'paper', 'scissors']
+VALID_CHOICES = ['rock', 'paper', 'scissors', 'spock', 'lizard']
+COMPARE_CHOICES = {rock: ['scissors', 'lizard'], paper: ['rock', 'spock'], scissors: ['paper', 'lizard'], spock: ['scissors', 'rock'], lizard: ['paper', 'spock']}
 
 def prompt(message)
   puts("=> #{message}")
 end
 
 def win?(first, second)
-  (first == 'rock' && second == 'scissors') ||
-    (first == 'paper' && second == 'rock') ||
-    (first == 'scissors' && second == 'paper')
+  COMPARE_CHOICES[first.to_sym].include?(second)
 end
 
 def display_result(player, computer)
